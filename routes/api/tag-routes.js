@@ -8,9 +8,18 @@ router.get('/', (req, res) => {
   // be sure to include its associated Product data
 });
 
-router.get('/:id', (req, res) => {
-  // find a single tag by its `id`
-  // be sure to include its associated Product data
+router.get('/:id', async (req, res) => {
+  try {
+    foundTag = await Tag.findByPK(req.params.id, {include:[{ProductTag}, {Product}] });
+    if (!foundTag) {
+      res.status(404).json({ message: "No product wit hthis tag found"});
+    }
+    res.status(200).json(foundTag);
+  }
+
+  catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.post('/', (req, res) => {
