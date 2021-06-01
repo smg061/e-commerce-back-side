@@ -19,11 +19,14 @@ Clone the git repository and install the dependencies using ```npm install```. T
 
 ## Usage <a name="usage"></a>
 
-This backend project includes routes that listen for requests on the localhost:3001/api/* path. CRUD operations on the Product, Category, and Tag models can be done through the 
+This backend project includes routes that listen for requests on ```the localhost:3001/api/*``` path. CRUD operations on the Product, Category, and Tag models can be done through the 
 ```api/products/``` , ```api/categories/```, and ```api/tags/``` respectively
 
+![img](https://github.com/smg061/e-commerce-back-side/blob/master/img/2021-06-01%2015_17_02-2021-06-01_14-51-46.mp4%20-%20VLC%20media%20player.jpg)
+![img](https://github.com/smg061/e-commerce-back-side/blob/master/img/2021-06-01%2015_19_39-2021-06-01_14-51-46.mp4%20-%20VLC%20media%20player.jpg)
+![img](https://github.com/smg061/e-commerce-back-side/blob/master/img/2021-06-01%2015_20_10-2021-06-01_14-51-46.mp4%20-%20VLC%20media%20player.jpg)
 
-A demonstration of the app can be found here: 
+A demonstration of the app can be found here: https://www.youtube.com/watch?v=kNJMr51GaBo
 
 
 ## Questions <a name="questions"></a>
