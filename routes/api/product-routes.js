@@ -22,6 +22,9 @@ router.get('/:id', async(req, res) => {
     const productData = await Product.findByPk(req.params.id, {
       include: [{model: Category}, {model: Tag}]
     });
+    if (!productData) {
+      res.status(404).json({message:"Product with this id not found"});
+    }
   res.status(200).json(productData);
   }
   catch (err) {
@@ -64,7 +67,6 @@ router.post('/', (req, res) => {
 // update product
 router.put('/:id', (req, res) => {
   // update product data
-
   Product.update(req.body, {
     where: {
       product_id: req.params.id,
@@ -97,15 +99,28 @@ router.put('/:id', (req, res) => {
         ProductTag.bulkCreate(newProductTags),
       ]);
     })
-    .then((updatedProductTags) => res.json(updatedProductTags))
+    .then((updatedProductTags) => res.json(req.body))
     .catch((err) => {
       // console.log(err);
       res.status(400).json(err);
     });
 });
 
-router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+router.delete('/:id', async(req, res) => {
+  // delete a category by its `id` value
+  try {
+    const deleteProduct = await Product.destroy({
+      where: {
+        product_id: req.params.id
+      }
+    })
+    if (!deleteProduct) {
+      res.status(404).json({message:"Cannot delete. Product with this id not found"});
+    }
+    res.status(200).json(deleteProduct);
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
 });
-
 module.exports = router;
